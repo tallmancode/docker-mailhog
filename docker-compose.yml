@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+
+  # SMTP Server
+  smtp:
+    restart: always
+    platform: linux/x86_64
+    image: mailhog/mailhog:latest
+    container_name: docker-workspace-smtp
+    logging:
+      driver: 'none'
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - docker_workspace_network
+
+networks:
+  docker_workspace_network:
+    driver: bridge
